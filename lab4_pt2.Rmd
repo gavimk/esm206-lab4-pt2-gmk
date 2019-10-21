@@ -1,0 +1,37 @@
+---
+title: "Lab4 Part 2"
+author: "Gavriella Keyles"
+date: "10/21/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+First I'll attach my packages!
+
+```{r, include = FALSE}
+
+library(tidyverse)
+library(plotly)
+library(DT)
+
+```
+
+Now we'll make an interactive graph of the iris data:
+
+```{r}
+
+iris_graph <- ggplot(iris, aes( x = Petal.Width, y = Petal.Length))+
+  geom_point(aes(size = Sepal.Width,
+                 color = Species))+
+  labs(x = "Petal width (cm)",
+       y = "Petal length (cm)",
+       title = "Iris metrics by species")
+
+iris_graph
+
+ggplotly(iris_graph)
+```
+
